@@ -7,11 +7,14 @@ function App() {
   let startX: number;
   let initialX: number;
   let currentTranslate: number = 0; // Переменная для отслеживания текущего значения трансляции
-
   const dragStart = (e: MouseEvent): void => {
     isDragging = true;
     startX = e.clientX;
     initialX = startX; // Сохраняем начальную позицию
+    // console.log(e.pageX);
+    console.log(e.clientX);
+    // console.log(e.scrollLeft);
+    // carouselRef.current.style.transform = `translate3d(-100px, 0, 0)`;
     // console.log(startX, "startX dragStart");
   };
 
@@ -20,13 +23,13 @@ function App() {
       const moveX: number = e.clientX - startX; // Вычисляем смещение
 
       // console.log(e.clientX, "clientX dragging");
-      // console.log(moveX, "moveX dragging");
+      console.log(moveX, "moveX dragging");
 
       const translateX: number = currentTranslate + moveX; // Добавляем смещение к текущему значению
 
       // console.log(currentTranslate, "currentTranslate dragging");
       // console.log(translateX, "translateX dragging");
-      if (carouselRef.current && translateX >= -420 && translateX <= 420) {
+      if (carouselRef.current && translateX <= 0) {
         carouselRef.current.style.transform = `translate3d(${translateX}px, 0, 0)`;
       }
     }
